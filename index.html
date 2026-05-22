@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-
+        /* 1. ПЕРЕМЕННЫЕ И ОСНОВА (Design System) */
         :root {
             --bg-base: #090d16;
             --bg-surface: #121824;
@@ -54,6 +54,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: var(--transition);
         }
 
         .logo {
@@ -134,6 +135,7 @@
             width: 100%;
             margin: 0 auto;
             padding: 40px 20px;
+            transition: var(--transition);
         }
 
         .content-section {
@@ -557,6 +559,85 @@
             background: rgba(0, 0, 0, 0.2);
             border-radius: 12px;
             border: 1px solid var(--border-color);
+        }
+
+        /* ОПТИМИЗАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (Responsive Styles) */
+        @media (max-width: 600px) {
+            header {
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                overflow-x: auto;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+                gap: 4px;
+            }
+
+            .nav-btn {
+                padding: 8px 12px;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .user-stats-widget {
+                width: 100%;
+                justify-content: center;
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+
+            main {
+                padding: 20px 12px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h2 {
+                font-size: 20px;
+            }
+
+            .hero-banner h2 {
+                font-size: 22px;
+            }
+
+            .riddle-card {
+                padding: 25px 20px;
+            }
+
+            .riddle-text {
+                font-size: 18px;
+            }
+
+            .option-card {
+                padding: 15px 18px;
+                font-size: 16px;
+            }
+
+            #molecule-canvas {
+                height: 180px;
+            }
+
+            .toast {
+                bottom: 20px;
+                right: 15px;
+                left: 15px;
+                justify-content: center;
+                text-align: center;
+                padding: 14px 20px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -1063,9 +1144,9 @@
             updateStatsDOM();
         }
 
-        // Поделиться результатами
+        // Поделиться результатами с ссылкой
         function shareResults() {
-            const textToCopy = `🔬 Я набрал ${state.currentScore} из ${state.currentQuizQuestions.length} в Химическом Тренажере «ChemStudio»! Проверь и ты свои знания химии: https://promtsupport.github.io/chemistry/`;
+            const textToCopy = `🔬 Я набрал ${state.currentScore} из ${state.currentQuizQuestions.length} в Химическом Тренажере «ChemStudio»! Проверь и ты свои знания химии здесь: https://promtsupport.github.io/chemistry/`;
             
             const dummy = document.createElement('textarea');
             document.body.appendChild(dummy);
